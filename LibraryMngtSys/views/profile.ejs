@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e0f7fa;
+        margin: 0;
+        padding: 20px;
+    }
+  
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    h1 {
+        text-align: center;
+        color: #01579b;
+    }
+
+    .profile-details {
+        margin-top: 20px;
+    }
+  
+    .profile-item {
+        background-color: #e1f5fe;
+        border: 1px solid #81d4fa;
+        border-radius: 5px;
+        margin: 10px 0;
+        padding: 10px 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    .profile-item p {
+        margin: 5px 0;
+        color: #0277bd;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        color: #0277bd;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>User Profile</h1>
+    <div class="profile-details">
+      <div class="profile-item">
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+      </div>
+      <h2>Lended Books</h2>
+      <% if (user.booksLent && user.booksLent.length > 0) { %>
+        <ul>
+          <% books.forEach(book => { %>
+            <li class="profile-item">
+              <p><strong>Title:</strong> <%= book.title %></p>
+              <p><strong>Author:</strong> <%= book.author %></p>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p>No books lended yet.</p>
+      <% } %>
+    </div>
+    <a href="/manage-users" class="back-link">Back to Manage Users</a>
+  </div>
+</body>
+</html>

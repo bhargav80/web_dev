@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+       @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: 'Quicksand', sans-serif;
+        margin: 20px 40px;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        background: #fafafa;
+        background-color: rgb(23, 185, 255);
+      }
+      .fullscreen-image {
+        position: fixed;
+        top: 7%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place image behind other content */
+      }
+
+      .fullscreen-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Scale image to cover entire container */
+      }
+
+      .menu {
+    
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+
+  .menu a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu a.blue {
+    background-color: blue;
+  }
+
+  .menu a.red {
+    background-color: red;
+  }
+
+  .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+  }
+  
+  .outlined-text {
+    font-size: 36px;
+    font-weight: bold;
+    color: white; /* Text color */
+    text-shadow: 2px 2px 4px black; /* Shadow effect (black color) */
+  }
+  
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h3 style="color: white">LMS</h3>
+    </nav>
+    <div class="fullscreen-image">
+      <img src="/inaki-del-olmo-NIJuEQw0RKg-unsplash.jpg" alt="" />
+    </div>
+    <div style="color: white;" class="menu">
+      <h1 class="outlined-text">Library Management System</h1>
+        <ul>
+            <li>
+              <a href="/admin-login" class="blue">Librarian</a>
+              <a href="/student-menu" class="red">Student</a>
+            </li>
+        </ul>
+    </div>
+  </body>
+</html>

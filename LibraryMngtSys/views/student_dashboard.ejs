@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fce4ec; /* Pink theme */
+        margin: 0;
+        padding: 20px;
+    }
+
+    .dashboard-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #ff1493; /* Pink color for heading */
+        text-align: center;
+    }
+
+    .button-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .button-links a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ff69b4; /* Lighter pink for buttons */
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-links a:hover {
+        background-color: #ff5c99; /* Darker pink on hover */
+    }
+
+    .button-links a.edit-profile-btn {
+        background-color: #20b2aa; /* Turquoise color for edit profile button */
+    }
+
+    .button-links a.edit-profile-btn:hover {
+        background-color: #2eb8b0; /* Darker turquoise on hover */
+    }
+</style>
+</head>
+<body>
+<div class="dashboard-container">
+    <h1>Welcome, <%= student.name %>!</h1>
+    <div class="button-links">
+        <a href="/student/view-books">View Books</a>
+        <a href="/student-menu">Home</a>
+    </div>
+    <div class="button-links">
+        <a href="/student/lendedBooks">View Lended Books</a>
+        <a href="/student/edit/profile" class="edit-profile-btn">Edit Profile</a>
+    </div>
+</div>
+</body>
+</html>

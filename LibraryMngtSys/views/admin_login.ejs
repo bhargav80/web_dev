@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoonish Login</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff6600;
+        }
+
+        label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <h2>Login</h2>
+        <label for="email">Email</label>
+        <input type="text" name="email" required>
+        <div class="email error"></div>
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+        <div class="password error"></div>
+        <button>Login</button>
+    </form>
+</body>
+</html>
+
+<script>
+    const form = document.querySelector('form');
+    
+    const emailError = document.querySelector('.email.error');
+    const passwordError = document.querySelector('.password.error');
+    form.addEventListener('submit',async(e)=>{
+        e.preventDefault();
+        //reset errors
+        emailError.textContent = '';
+        passwordError.textContent = '';
+        //get the values
+        const email = form.email.value;
+        const password = form.password.value;
+        //console.log(email,password);
+
+        try {
+            const res = await fetch('/admin-login',{
+                method:'POST',
+                body:JSON.stringify({email:email,password:password}),
+                headers:{'Content-Type':'application/json'}
+            })
+            const data = await res.json();
+            console.log(data)
+            if(data.errors)
+            {
+                emailError.textContent = data.errors.email;
+                passwordError.textContent = data.errors.password;
+            }
+            if(data.admin)
+            {
+              console.log(data)
+                
+                location.assign('/admin-dashboard');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    })
+</script>
+

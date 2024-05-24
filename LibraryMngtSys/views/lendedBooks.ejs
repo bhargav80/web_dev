@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lended Books</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .book-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .book-item {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        position: relative; /* Added for positioning the remove button */
+      }
+
+      .book-item h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #007bff;
+      }
+
+      .book-item p {
+        margin: 5px 0;
+        color: #555;
+      }
+
+      /* Style for the remove button */
+      .book-item form button[type="submit"] {
+        background-color: #007bff; /* Blue color for remove button */
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      .back-link {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        color: #007bff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lended Books</h1>
+      <% if (books && books.length > 0) { %>
+      <div class="book-list">
+        <% books.forEach(book => { %>
+        <div class="book-item">
+          <h2><%= book.title %></h2>
+          <p><strong>Author:</strong> <%= book.author %></p>
+          <p><strong>Title:</strong> <%= book.title %></p>
+          <form
+            action="/student/books/remove/<%= book._id %>?_method=DELETE"
+            method="post"
+          >
+            <button type="submit">Remove</button>
+          </form>
+          <!-- Add more book details as needed -->
+        </div>
+        <% }); %>
+      </div>
+      <div class="fine-info">
+        <p>Total Fine: $<%= fine %></p>
+      </div>
+      <% } else { %>
+      <p>No books lended yet.</p>
+      <% } %>
+      <a href="/student_dashboard" class="back-link">Back to Dashboard</a>
+    </div>
+  </body>
+</html>

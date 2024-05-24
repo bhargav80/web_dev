@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book Form</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007bff
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Book</h2>
+        <form action="/add-book" method="post">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" required>
+
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
+</body>
+</html>
